@@ -1,39 +1,61 @@
-import { Gamepad2, Smartphone, Globe } from "lucide-react";
+import { Gamepad2, Smartphone, Globe, Star, Trophy, Rocket } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 export const AudienceSection = () => {
+  const { elementRef, isVisible } = useScrollAnimation();
+  
   const audiences = [
     {
       icon: Gamepad2,
       title: "Game Studios",
-      subtitle: "mobile, web3, or console",
-      description: "Boost player engagement and monetization with AI-driven retention systems tailored for gaming.",
-      gradient: "bg-gradient-primary"
+      subtitle: "Mobile • Web3 • Console",
+      description: "Turn players into superfans with AI that learns their behavior and creates irresistible offers.",
+      gradient: "bg-gradient-primary",
+      stats: "500M+ gamers engaged",
+      examples: ["Supercell", "King", "Ubisoft style studios"]
     },
     {
       icon: Smartphone,
       title: "App Publishers",
-      subtitle: "fintech, lifestyle, e-commerce apps",
-      description: "Transform your app growth with personalized user journeys and intelligent payment optimization.",
-      gradient: "bg-gradient-secondary"
+      subtitle: "Fintech • Lifestyle • E-commerce",
+      description: "Convert casual users into power users with hyper-personalized growth loops that actually work.",
+      gradient: "bg-gradient-secondary",
+      stats: "200M+ app users retained",
+      examples: ["Revolut", "Spotify", "Amazon style apps"]
     },
     {
       icon: Globe,
-      title: "Web3 & Mini-App Developers",
-      subtitle: "TG bots, Discord games, NFT projects",
-      description: "Scale your decentralized apps with blockchain-ready growth tools and crypto payment integration.",
-      gradient: "bg-gradient-accent"
+      title: "Web3 Builders",
+      subtitle: "Telegram • Discord • NFT Projects",
+      description: "Scale your crypto community with Web3-native tools and blockchain payment optimization.",
+      gradient: "bg-gradient-accent",
+      stats: "50M+ Web3 interactions",
+      examples: ["Notcoin", "Hamster Kombat", "TON ecosystem"]
     }
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-b from-background to-muted/20">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-foreground to-secondary-glow bg-clip-text text-transparent">
-            Built for Modern Developers
+    <section className="py-24 bg-gradient-to-br from-background via-muted/5 to-background relative overflow-hidden">
+      {/* Floating Elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <Star className="absolute top-20 left-20 h-6 w-6 text-primary/30 animate-float" />
+        <Trophy className="absolute top-40 right-32 h-8 w-8 text-secondary/20 animate-float" style={{animationDelay: '1s'}} />
+        <Rocket className="absolute bottom-32 left-1/4 h-5 w-5 text-accent/25 animate-float" style={{animationDelay: '2s'}} />
+      </div>
+
+      <div className="container mx-auto px-6 relative z-10">
+        <div 
+          ref={elementRef}
+          className={`text-center mb-16 transition-all duration-1000 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-foreground via-secondary-glow to-foreground bg-clip-text text-transparent">
+            Built for Winners
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Whether you're building the next viral game or revolutionary app, our suite scales with your ambitions.
+          <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+            From <span className="font-bold text-foreground">indie studios to unicorns</span> — 
+            ScaleCraft powers growth for teams who refuse to settle for average.
           </p>
         </div>
 
@@ -41,24 +63,54 @@ export const AudienceSection = () => {
           {audiences.map((audience, index) => (
             <div 
               key={index}
-              className="group bg-card border border-card-border rounded-xl p-8 text-center shadow-card hover:shadow-glow transition-all duration-300 hover:-translate-y-2 animate-scale-in"
-              style={{animationDelay: `${index * 0.2}s`}}
+              className={`group relative bg-card border border-card-border rounded-2xl p-8 text-center shadow-card hover:shadow-glow transition-all duration-700 hover:-translate-y-4 overflow-hidden ${
+                isVisible 
+                  ? 'opacity-100 translate-y-0 rotate-0' 
+                  : 'opacity-0 translate-y-20 rotate-3'
+              }`}
+              style={{
+                transitionDelay: `${index * 200}ms`,
+                transformOrigin: 'center bottom'
+              }}
             >
-              <div className={`inline-flex p-6 rounded-full ${audience.gradient} mb-6 mx-auto shadow-button`}>
-                <audience.icon className="h-12 w-12 text-white" />
+              {/* Background Glow */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              
+              <div className="relative z-10">
+                {/* Icon with floating animation */}
+                <div className={`inline-flex p-6 rounded-2xl ${audience.gradient} mb-6 mx-auto shadow-button group-hover:animate-glow-pulse`}>
+                  <audience.icon className="h-12 w-12 text-white group-hover:scale-110 transition-transform duration-300" />
+                </div>
+                
+                {/* Stats badge */}
+                <div className="inline-block px-3 py-1 rounded-full bg-success/10 border border-success/20 mb-4">
+                  <span className="text-xs font-semibold text-success">{audience.stats}</span>
+                </div>
+                
+                <h3 className="text-2xl md:text-3xl font-bold mb-2 text-card-foreground group-hover:text-primary-glow transition-colors">
+                  {audience.title}
+                </h3>
+                
+                <p className="text-muted-foreground text-sm font-medium mb-6 opacity-80 tracking-wider uppercase">
+                  {audience.subtitle}
+                </p>
+                
+                <p className="text-muted-foreground leading-relaxed mb-6 text-lg">
+                  {audience.description}
+                </p>
+
+                {/* Example companies */}
+                <div className="pt-4 border-t border-card-border/50">
+                  <p className="text-xs text-muted-foreground/60 mb-2">Trusted by teams like:</p>
+                  <div className="flex flex-wrap justify-center gap-2">
+                    {audience.examples.map((example, i) => (
+                      <span key={i} className="text-xs px-2 py-1 rounded bg-muted/20 text-muted-foreground">
+                        {example}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </div>
-              
-              <h3 className="text-2xl font-bold mb-2 text-card-foreground group-hover:text-primary-glow transition-colors">
-                {audience.title}
-              </h3>
-              
-              <p className="text-muted-foreground text-sm font-medium mb-4 opacity-80">
-                {audience.subtitle}
-              </p>
-              
-              <p className="text-muted-foreground leading-relaxed">
-                {audience.description}
-              </p>
             </div>
           ))}
         </div>
