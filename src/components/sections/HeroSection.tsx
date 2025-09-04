@@ -35,7 +35,7 @@ export const HeroSection = () => {
           </div>
           
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 bg-gradient-to-r from-foreground via-primary-glow to-foreground bg-clip-text text-transparent leading-tight">
-            Scale engagement.
+            ScaleCraft
             <br />
             <span className="text-secondary-glow">Boost retention.</span>
             <br />
@@ -43,17 +43,13 @@ export const HeroSection = () => {
           </h1>
           
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
-            Your all-in-one AI growth suite for games and apps. Deploy engagement systems in days, not months.
+            Your all-in-one AI growth suite for games and apps. Scale ready from 1 to 100 million users in no time.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+          <div className="flex justify-center items-center mb-12">
             <Button variant="hero" size="xl" className="group">
               Start Free Today
               <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            <Button variant="outline" size="xl" className="group">
-              <Play className="h-5 w-5" />
-              Book a Demo
             </Button>
           </div>
 

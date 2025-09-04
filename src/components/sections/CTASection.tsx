@@ -30,15 +30,11 @@ export const CTASection = () => {
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
+          <div className="flex justify-center items-center mb-16">
             <Button variant="hero" size="xl" className="group shadow-glow">
               <Zap className="h-6 w-6" />
               Start Free Today
               <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            <Button variant="outline" size="xl" className="group">
-              <Play className="h-5 w-5" />
-              Book a Demo
             </Button>
           </div>
 

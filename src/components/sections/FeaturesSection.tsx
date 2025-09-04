@@ -1,4 +1,4 @@
-import { Bot, Trophy, Gift, CreditCard, Palette } from "lucide-react";
+import { Bot, Trophy, Gift, CreditCard, Palette, Users, Target } from "lucide-react";
 
 export const FeaturesSection = () => {
   const features = [
@@ -31,6 +31,18 @@ export const FeaturesSection = () => {
       title: "Marketing Templates",
       description: "Generate stunning campaigns in minutes — emails, banners, store creatives, and social posts.",
       gradient: "bg-gradient-secondary"
+    },
+    {
+      icon: Users,
+      title: "Advanced Segmentation",
+      description: "AI-powered user segmentation that automatically groups players by behavior, spending, and engagement patterns.",
+      gradient: "bg-gradient-accent"
+    },
+    {
+      icon: Target,
+      title: "Deep Personalization",
+      description: "Deliver hyper-personalized experiences with AI that adapts content, offers, and gameplay to individual users.",
+      gradient: "bg-gradient-primary"
     }
   ];
 
